@@ -1,19 +1,19 @@
 // ***************************************************************************************
 // ***************************************************************************************
 //
-//      Name :      config.h
-//      Authors :   Paul Robson (paul@robsons.org.uk)
-//      Date :      30th December 2023
-//      Reviewed :  No
-//      Purpose :   Configuration file processing
+//		Name : 		mos.h
+//		Author :	Paul Robson (paul@robsons.org.uk)
+//		Date : 		26th March 2024
+//		Reviewed :	No
+//		Purpose :	MOS interface
 //
 // ***************************************************************************************
 // ***************************************************************************************
 
-#ifndef _CONFIG_H
-#define _CONFIG_H
+#ifndef _MOS_H
+#define _MOS_H
 
-void CFGProcess(void);
+uint8_t MOSExecute(uint8_t *command);
 
 #endif
 

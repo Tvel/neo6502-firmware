@@ -29,10 +29,12 @@ GROUP 1 System
         Deposit the value (32-bits) of the 100Hz system timer into \Param{0..3}.
 
     FUNCTION 2 Key Status
-        i1 = *DPARAMS;
-        *DPARAMS = (i1 < KBD_MAX_KEYCODE) ? KBDGetStateArray()[i1] : 0;
+        i1 = DPARAMS[0];
+        DPARAMS[0] = (i1 < KBD_MAX_KEYCODE) ? KBDGetStateArray()[i1] : 0;
+        DPARAMS[1] = KBDGetModifiers();
     DOCUMENTATION
-        Deposit the state of the specified keyboard key into \Param{0}.
+        Deposits the state of the specified keyboard key into \Param{0}.
+        State of keyboard modifiers (Shift/Ctrl/Alt/Meta) is returned in \Param{1}.
         The key which to query is specified in \Param{0}.
 
     FUNCTION 3 Basic
@@ -67,3 +69,7 @@ GROUP 1 System
         System Reset. This is a full hardware reset. It resets the RP2040 using the Watchdog timer, and
         this also resets the 65C02.
 
+    FUNCTION 8 MOS
+        *DERROR = MOSExecute(cpuMemory+DSPGetInt16(DCOMMAND,4));
+    DOCUMENTATION
+        Do a MOS command (a '* command') these are specified in the Wiki as they will be steadily expanded.

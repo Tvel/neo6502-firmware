@@ -76,7 +76,7 @@ void DSPReset(void) {
 	SPRReset();                                                                 // Reset sprites.
 	LOGDrawLogo();                                                              // Draw logo
 	CONWrite(0x80+3);                                                           // Yellow text
-	for (int i = 0;i < 22;i++) CONWrite(19); 
+	for (int i = 0;i < 19;i++) CONWrite(19); 
 	const char *c = bootString;
 	while (*c != '\0') CONWrite(*c++);	
 	
@@ -87,7 +87,6 @@ void DSPReset(void) {
 	CONWrite(0x80+6);
 	STOSynchronise();                                                           // Synchronise storage
 	CONWrite(0x80+2);
-	CFGProcess();                                                               // Process configuration file.
 	IOInitialise(); 															// UEXT Initialise.
 }
 

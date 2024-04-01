@@ -1,35 +1,25 @@
 // ***************************************************************************************
 // ***************************************************************************************
 //
-//      Name :      config.cpp
+//      Name :      blitter.h
 //      Authors :   Paul Robson (paul@robsons.org.uk)
-//      Date :      30th December 2023
+//      Date :      24th March 2024
 //      Reviewed :  No
-//      Purpose :   Configuration handler
+//      Purpose :   Blitter header
 //
 // ***************************************************************************************
 // ***************************************************************************************
 
-#include "common.h"
+#ifndef _BLITTER_H
+#define _BLITTER_H
 
-// ***************************************************************************************
-//
-//								Handle configuration
-//
-// ***************************************************************************************
+uint8_t BLTSimpleCopy(uint8_t pageFrom,uint16_t addressFrom, uint8_t pageTo, uint16_t addressTo, uint16_t transferSize);
 
-void CFGProcess(void) {
-#ifdef USBKEY_STORAGE
-	if (FIOReadFileBasic(".config",0x100) == 0) {  								// Try to read config file
-		LOCSetLocale(cpuMemory[0x100],cpuMemory[0x101]);  						// Set locale from config file.
-	}
 #endif
-}
 
 // ***************************************************************************************
 //
 //		Date 		Revision
 //		==== 		========
-//		10/01/24 	Config load is for USB only. Doesn't work for SDCard. Don't know why.
 //
 // ***************************************************************************************

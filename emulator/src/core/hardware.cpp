@@ -29,6 +29,17 @@ static int frameCount = 0;
 static std::filesystem::path storagePath = "storage";
 static std::filesystem::path currentPath = storagePath;
 
+// *******************************************************************************************************************************
+//
+//												Storage path management
+//
+// *******************************************************************************************************************************
+
+void HWSetDefaultPath(const char *defaultPath) {
+	storagePath = defaultPath;
+	currentPath = defaultPath;
+}
+
 static std::string getAbspath(const std::string& path) {
 	std::filesystem::path newPath;
 	if (!path.empty() && (path[0] == '/'))
@@ -222,7 +233,7 @@ uint8_t FISCreateDirectory(const std::string& filename) {
 	else
 		printf("OK\n");
 
-	return !ec ? 1 : 0;
+	return ec ? 1 : 0;
 }
 
 // ***************************************************************************************
@@ -520,7 +531,7 @@ void SERSetSerialFormat(uint32_t baudRate,uint32_t protocol) {
 // ***************************************************************************************
 
 int UEXTSetGPIODirection(int gpio,int pinType) {
-	printf("Pin %d set direction to %d\n",gpio,pinType);
+	//printf("Pin %d set direction to %d\n",gpio,pinType);
 	return 0;
 }
 
@@ -633,6 +644,20 @@ int UEXTSPIReadBlock(uint8_t *data,size_t size) {
 
 void ResetSystem(void) {
 	printf("Hardware reset.\n");
+}
+
+// ***************************************************************************************
+//
+//                          			Dummy Gamepad
+//
+// ***************************************************************************************
+
+uint8_t GMPGetControllerCount(void) {
+	return 0;
+}
+
+uint32_t GMPReadDigitalController(uint8_t index) {
+	return 0;
 }
 
 // ***************************************************************************************
