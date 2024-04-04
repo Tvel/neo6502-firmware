@@ -1,14 +1,24 @@
-0 ' library line
-0 ' another library line
-edit
-end
-palette 2,222,122,99
-rect 10,10 solid ink 2 to 100,100
+
 while peek($FF00):wend
-	poke $FF04,2
-	poke $FF01,38
-	poke $FF00,5
+poke $FF04,0
+poke $FF01,35
+poke $FF00,4
 while peek($FF00):wend
-dim c(3)
-for i = 0 to 3:c(i) = peek($FF04+i):next
-for i = 0 to 3:print c(I):next
+
+a = 3.1415/4
+s = sin(a)
+t = tan(a)
+print a;" ";s;" ";t;" ";atan(t)
+print
+
+while peek($FF00):wend
+poke $FF04,1
+poke $FF01,35
+poke $FF00,4
+while peek($FF00):wend
+
+a = 45
+s = sin(a)
+t = tan(a)
+print a;" ";s;" ";t;" ";atan(t)
+
